@@ -1,13 +1,16 @@
 [package]
-name = "rust_settler"
+name = "amethyst-starter-2d"
 version = "0.1.0"
-authors = ["niels <highintothesky@github.com>"]
+authors = ["Hilmar Wiegand <me@hwgnd.de>"]
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
+amethyst = "0.11.0"
+log = { version = "0.4.6", features = ["serde"] }
 
-[[bin]]
-name = "rust_settler"
-path = "src/main.rs"
+[features]
+default = ["vulkan"]
+empty = ["amethyst/empty"]
+metal = ["amethyst/metal"]
+vulkan = ["amethyst/vulkan"]
+nightly = ["amethyst/nightly"]
