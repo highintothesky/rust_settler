@@ -8,6 +8,12 @@ use piston::event_loop::*;
 use piston::input::*;
 use glutin_window::GlutinWindow as Window;
 use opengl_graphics::{ GlGraphics, OpenGL };
+// use std::io;
+
+pub mod units;
+use units::map::Map as Map;
+// use units;
+// use units::mod::map;
 
 pub struct App {
     gl: GlGraphics, // OpenGL drawing backend.
@@ -46,6 +52,13 @@ impl App {
 }
 
 fn main() {
+    // make a map
+    let mut mymap: Map = units::map::Map::new(
+        20.0,
+        40.0
+    );
+    mymap.getmap();
+
     // Change this to OpenGL::V2_1 if not working.
     let opengl = OpenGL::V3_2;
 
