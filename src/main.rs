@@ -27,7 +27,7 @@ fn main() {
 
     let tilesheet = assets.join(&tileset.images[0].source);
     let tilesheet = Texture::from_path(
-        &mut window.factory,
+        &mut window.create_texture_context(),
         &tilesheet,
         Flip::None,
         &TextureSettings::new(),
@@ -38,7 +38,7 @@ fn main() {
     let image = Image::new();
 
     while let Some(e) = window.next() {
-        window.draw_2d(&e, |c, g| {
+        e.draw_2d(|c, g| {
             clear([0.5; 4], g);
 
             for (y, row) in layer.tiles.iter().enumerate().clone() {
