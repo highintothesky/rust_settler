@@ -8,5 +8,5 @@ cargo build
 
 run:
 ```
-./target/debug/rust_settler
+cargo run
 ```
