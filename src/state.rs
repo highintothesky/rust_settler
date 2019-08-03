@@ -1,7 +1,7 @@
 use amethyst::{
     assets::{AssetStorage, Loader},
     core::transform::Transform,
-    input::{get_key, is_close_requested, is_key_down, VirtualKeyCode},
+    input::{get_key, is_close_requested, is_key_down, VirtualKeyCode, get_mouse_button, get_input_axis_simple},
     prelude::*,
     renderer::{Camera, ImageFormat, SpriteRender, SpriteSheet, SpriteSheetFormat, Texture},
     window::ScreenDimensions,
@@ -41,11 +41,27 @@ impl SimpleState for MyState {
             if is_close_requested(&event) || is_key_down(&event, VirtualKeyCode::Escape) {
                 return Trans::Quit;
             }
+            // if let amethyst::event:WindowEvent::DeviceEvent(event) = &event {
+            //     info!("WTF WTF WTF {:?}", event);
+            // }
 
             // Listen to any key events
             if let Some(event) = get_key(&event) {
-                info!("handling key event: {:?}", event);
+                info!("======== handling key event: {:?}", event);
             }
+            else if let Some(event) = get_mouse_button(&event) {
+                info!("-------- mouse button: {:?}", event);
+            }
+            // else if let Some(event) = get_input_axis_simple(&event, 0) {
+            //     info!("-------- mouse button: {:?}", event);
+            // }
+            else {
+                info!("got something else: {:?}", event);
+                let event = 0;
+            }
+            // else if let Some(event) = get_input_axis_simple(&event) {
+            //     info!("axis input event: {:?}", event);
+            // }
 
             // If you're looking for a more sophisticated event handling solution,
             // including key bindings and gamepad support, please have a look at
