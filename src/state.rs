@@ -41,7 +41,7 @@ impl SimpleState for MyState {
             if is_close_requested(&event) || is_key_down(&event, VirtualKeyCode::Escape) {
                 return Trans::Quit;
             }
-            // if let amethyst::event:WindowEvent::DeviceEvent(event) = &event {
+            // if let StateEvent::DeviceEvent(event) = &event {
             //     info!("WTF WTF WTF {:?}", event);
             // }
 
@@ -52,16 +52,12 @@ impl SimpleState for MyState {
             else if let Some(event) = get_mouse_button(&event) {
                 info!("-------- mouse button: {:?}", event);
             }
-            // else if let Some(event) = get_input_axis_simple(&event, 0) {
-            //     info!("-------- mouse button: {:?}", event);
-            // }
             else {
-                info!("got something else: {:?}", event);
-                let event = 0;
+                info!("{:?}", event);
             }
-            // else if let Some(event) = get_input_axis_simple(&event) {
-            //     info!("axis input event: {:?}", event);
-            // }
+            // let x = get_input_axis_simple(&self.right_input_axis, &event);
+            // let y = get_input_axis_simple(&self.up_input_axis, &input);
+            // let z = get_input_axis_simple(&self.forward_input_axis, &input);
 
             // If you're looking for a more sophisticated event handling solution,
             // including key bindings and gamepad support, please have a look at
